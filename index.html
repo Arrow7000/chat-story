@@ -27,11 +27,11 @@
 
     <div class="chat-window">
         <div class="message" ng-repeat="message in chat" ng-class="{{message.author}}"><strong>{{message.author}}:</strong>{{message.message}}</div>
+        <div class="typing" ng-show="typing.on">{{typing.dots}}</div>
     </div>
 
 
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>-->
 </body>
 
 </html>
