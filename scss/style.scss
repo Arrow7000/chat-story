@@ -1,10 +1,13 @@
 .message {
     width:300px;
 }
-
 .me {
     margin-left:300px;
 }
 .typing{
     width:25px;
+}
+.chat-window {
+    height: 400px;
+    overflow: auto;
 }

@@ -7,7 +7,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!--Bower -->
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+    <!--<script type="text/javascript" src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>-->
     <!--Module -->
     <script type="text/javascript" src="js/app.js"></script>
     <!--Controllers -->
@@ -29,7 +29,9 @@
         <div class="message" ng-repeat="message in chat" ng-class="{{message.author}}"><strong>{{message.author}}:</strong>{{message.message}}</div>
         <div class="typing" ng-show="typing.on">{{typing.dots}}</div>
     </div>
-
+    <div class="holder">
+        <button class="button" type="button" ng-show="choose" ng-repeat="c in choice" ng-click="beginThread(c)">{{c.messages[0].message}}</button>
+    </div>
 
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>-->
 </body>

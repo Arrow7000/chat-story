@@ -9,3 +9,8 @@
 .typing {
   width: 25px;
 }
+
+.chat-window {
+  height: 400px;
+  overflow: auto;
+}
