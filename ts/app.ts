@@ -92,17 +92,17 @@ angular.module('ChatStory', [])
                             messages: [
                                 new Message('me', 1, 'Okay'),
                                 new Message('me', .5, 'Welcome to Magicland!'),
-                                new Message('me', .5, ':D!'),
+                                new Message('me', .5, ':D'),
                                 new Message('leo', 1, 'Yayyyyyyyyy'),
                                 new Message('me', 1, 'Welcome to the land of the Unicorns...'),
-                                new Message('me', 1, ''),
+                                new Message('leo', 1, 'sweeet.'),
                             ]
                         }, {
                             label: 'No',
                             messages: [
                                 new Message('me', 1, 'No'),
                                 new Message('me', .5, 'Sorryyyyyyyyyyyyyyyyyyy'),
-                                new Message('me', .5, ':c!'),
+                                new Message('me', .5, ':c'),
                                 new Message('leo', 1, '*Snif snif*'),
                             ]
                         },
