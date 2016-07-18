@@ -1,9 +1,29 @@
-.message {
-  width: 300px;
+.message__block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.me {
-  margin-left: 300px;
+.message__body {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #77b;
+  border-radius: 10px;
+}
+
+.message__text {
+  margin: 0;
+  left: 0;
+  color: #fff;
+}
+
+.message--me .message__text {
+  right: 0;
+}
+
+.message--me .message__body {
+  background-color: #b77;
 }
 
 .typing {

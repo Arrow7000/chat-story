@@ -25,12 +25,29 @@
 
 <body ng-controller="Chat">
 
-    <div class="chat-window">
-        <div class="message" ng-repeat="message in chat" ng-class="{{message.author}}"><strong>{{message.author}}:</strong>{{message.message}}</div>
-        <div class="typing" ng-show="typing.on">{{typing.dots}}</div>
-    </div>
-    <div class="holder">
-        <button class="button" type="button" ng-show="choose" ng-repeat="c in choice" ng-click="beginThread(c)">{{c.messages[0].message}}</button>
+    <div class="container">
+
+        <div class="header-bar">
+            {{interlocutor.name}}
+        </div>
+
+        <div class="chat-window">
+
+            <div class="message__block" ng-repeat="message in chat" ng-class="{'message--me': message.author === 'me'}">
+                <div class="message__body">
+                    <p class="message__text">
+                        {{message.message}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="typing" ng-show="typing.on">{{typing.dots}}</div>
+        </div>
+
+        <div class="message-select__container" ng-show="choose">
+            <button class="button message-select__button" type="button" ng-repeat="c in choice" ng-click="beginThread(c)">{{c.messages[0].message}}</button>
+        </div>
+
     </div>
 
 </body>

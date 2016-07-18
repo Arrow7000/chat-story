@@ -1,11 +1,34 @@
 .message {
-    width:300px;
+    &__block {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    &__body{
+        position: relative;
+        display: inline-block;
+        padding: 10px;
+        background-color: #77b;
+        border-radius: 10px;
+    }
+    &__text {
+        margin: 0;
+        left:0;
+        color: #fff;
+    }
+    &--me {
+        .message {
+            &__text {
+                right:0;
+            }
+            &__body {
+                background-color: #b77;
+            }
+        }
+    }
 }
-.me {
-    margin-left:300px;
-}
-.typing{
-    width:25px;
+.typing {
+    width: 25px;
 }
 .chat-window {
     height: 400px;

@@ -3,7 +3,7 @@ angular.module('ChatStory', [])
     .controller('Chat', ['$scope', function ($scope) {
 
 
-        console.log(unicorn);
+        // console.log(unicorn);
 
 
 
@@ -26,6 +26,8 @@ angular.module('ChatStory', [])
             options?: thread[];
             label: string;
         }
+
+        $scope.interlocutor = { name: 'Leo' }
 
         $scope.typing = {
             on: false,
@@ -119,18 +121,16 @@ angular.module('ChatStory', [])
 
         $scope.beginThread = function (thread: thread) {
             $scope.choice = []
-            // $scope.$apply()
 
-            let pauseTillMessage = 0,
-                pauseTillTyping = 0;
+            let pause = 0
 
             thread.messages.forEach((m, i) => {
 
-                console.log(`Time for typing "${m.message}": ${typingTimeForMessage(m)}s`);
+                // console.log(`Time for typing "${m.message}": ${typingTimeForMessage(m)}s`);
 
-                pauseTillMessage += m.pause + typingTimeForMessage(m);
-                pauseTillTyping += m.pause;
-                // console.log(`Pause till message ${i + 1}: (${m.message}) typing starts: ${pauseTillTyping} seconds`);
+
+                pause += m.pause
+                // console.log(`Pause till message ${i + 1}: (${m.message}) typing starts: ${pause} seconds`);
 
 
                 // Sets typing indicator on timings
@@ -139,11 +139,14 @@ angular.module('ChatStory', [])
                     $scope.typing.start();
                     $scope.$apply();
 
-                }, pauseTillTyping * 1000);
+                }, pause * 1000);
 
-                pauseTillTyping += typingTimeForMessage(m);
 
-                // console.log(`Pause till message ${i + 1}: (${m.message}) appears: ${pauseTillMessage} seconds`);
+
+                pause += typingTimeForMessage(m)
+                // console.log(`Pause till message ${i + 1}: (${m.message}) appears: ${pause} seconds`);
+
+
 
                 // Sets message timings 
                 setTimeout(function () {
@@ -152,7 +155,7 @@ angular.module('ChatStory', [])
                     if (m.message !== '') $scope.chat.push(m);
                     $scope.$apply();
 
-                }, pauseTillMessage * 1000);
+                }, pause * 1000);
             });
 
 
@@ -160,7 +163,7 @@ angular.module('ChatStory', [])
                 $scope.choice = thread.options
                 $scope.choose = true
                 $scope.$apply();
-            }, (pauseTillMessage + 1) * 1000);
+            }, (pause + 1) * 1000);
 
 
         };

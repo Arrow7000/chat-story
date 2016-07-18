@@ -1,12 +1,13 @@
 angular.module('ChatStory', [])
     .controller('Chat', ['$scope', function ($scope) {
-        console.log(unicorn);
+        // console.log(unicorn);
         function Message(author, pause, message, typingSpeed) {
             this.author = author;
             this.pause = pause;
             this.message = message;
             this.typingSpeed = typingSpeed || 4;
         }
+        $scope.interlocutor = { name: 'Leo' };
         $scope.typing = {
             on: false,
             dots: '',
@@ -69,17 +70,17 @@ angular.module('ChatStory', [])
                             messages: [
                                 new Message('me', 1, 'Okay'),
                                 new Message('me', .5, 'Welcome to Magicland!'),
-                                new Message('me', .5, ':D!'),
+                                new Message('me', .5, ':D'),
                                 new Message('leo', 1, 'Yayyyyyyyyy'),
                                 new Message('me', 1, 'Welcome to the land of the Unicorns...'),
-                                new Message('me', 1, ''),
+                                new Message('leo', 1, 'sweeet.'),
                             ]
                         }, {
                             label: 'No',
                             messages: [
                                 new Message('me', 1, 'No'),
                                 new Message('me', .5, 'Sorryyyyyyyyyyyyyyyyyyy'),
-                                new Message('me', .5, ':c!'),
+                                new Message('me', .5, ':c'),
                                 new Message('leo', 1, '*Snif snif*'),
                             ]
                         },
@@ -88,33 +89,31 @@ angular.module('ChatStory', [])
         };
         $scope.beginThread = function (thread) {
             $scope.choice = [];
-            // $scope.$apply()
-            var pauseTillMessage = 0, pauseTillTyping = 0;
+            var pause = 0;
             thread.messages.forEach(function (m, i) {
-                console.log("Time for typing \"" + m.message + "\": " + typingTimeForMessage(m) + "s");
-                pauseTillMessage += m.pause + typingTimeForMessage(m);
-                pauseTillTyping += m.pause;
-                // console.log(`Pause till message ${i + 1}: (${m.message}) typing starts: ${pauseTillTyping} seconds`);
+                // console.log(`Time for typing "${m.message}": ${typingTimeForMessage(m)}s`);
+                pause += m.pause;
+                // console.log(`Pause till message ${i + 1}: (${m.message}) typing starts: ${pause} seconds`);
                 // Sets typing indicator on timings
                 setTimeout(function () {
                     $scope.typing.start();
                     $scope.$apply();
-                }, pauseTillTyping * 1000);
-                pauseTillTyping += typingTimeForMessage(m);
-                // console.log(`Pause till message ${i + 1}: (${m.message}) appears: ${pauseTillMessage} seconds`);
+                }, pause * 1000);
+                pause += typingTimeForMessage(m);
+                // console.log(`Pause till message ${i + 1}: (${m.message}) appears: ${pause} seconds`);
                 // Sets message timings 
                 setTimeout(function () {
                     $scope.typing.stop();
                     if (m.message !== '')
                         $scope.chat.push(m);
                     $scope.$apply();
-                }, pauseTillMessage * 1000);
+                }, pause * 1000);
             });
             setTimeout(function () {
                 $scope.choice = thread.options;
                 $scope.choose = true;
                 $scope.$apply();
-            }, (pauseTillMessage + 1) * 1000);
+            }, (pause + 1) * 1000);
         };
         $scope.beginThread(thread);
         // Functions 
