@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "angular": "^1.5.7",
-    "ng-lodash": "^0.5.0",
-    "bootstrap": "v4.0.0-alpha.2"
+    "ng-lodash": "^0.5.0"
   }
 }
