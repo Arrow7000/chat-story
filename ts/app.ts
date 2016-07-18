@@ -1,9 +1,17 @@
 declare var angular: any;
 angular.module('ChatStory', [])
+    .directive('typingIndicator', function () {
+        return {
+            scope: {},
+            controller: ['$scope', function ($scope) {
+                
+            }]
+        }
+    })
     .controller('Chat', ['$scope', function ($scope) {
 
 
-        console.log(unicorn);
+        // console.log(unicorn);
 
 
 
@@ -109,9 +117,6 @@ angular.module('ChatStory', [])
                     ]
                 }]
         }
-
-
-
 
 
 
