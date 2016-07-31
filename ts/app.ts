@@ -1,6 +1,6 @@
 declare var angular: any;
 angular.module('ChatStory', [])
-    .controller('Chat', ['$scope', function ($scope) {
+    .controller('Chat', ['$scope', '$http', function ($scope, $http) {
 
 
         // console.log(unicorn);
@@ -45,6 +45,7 @@ angular.module('ChatStory', [])
                 clearInterval(this.interval);
             }
         }
+
 
         $scope.chat = []
         $scope.choose = false
