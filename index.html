@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Chat Story</title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <!--Bower -->
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <!--<script type="text/javascript" src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>-->
@@ -30,7 +30,6 @@
         <div class="header-bar">
             {{interlocutor.name}}
         </div>
-
         <div class="chat-window">
 
             <div class="message__block" ng-repeat="message in chat" ng-class="{'message--me': message.author === 'me'}">

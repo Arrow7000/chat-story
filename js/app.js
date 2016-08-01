@@ -6,7 +6,7 @@ angular.module('ChatStory', [])
             }]
     };
 })
-    .controller('Chat', ['$scope', function ($scope) {
+    .controller('Chat', ['$scope', '$http', function ($scope, $http) {
         // console.log(unicorn);
         function Message(author, pause, message, typingSpeed) {
             this.author = author;

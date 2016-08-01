@@ -4,11 +4,11 @@ angular.module('ChatStory', [])
         return {
             scope: {},
             controller: ['$scope', function ($scope) {
-                
+
             }]
         }
     })
-    .controller('Chat', ['$scope', function ($scope) {
+    .controller('Chat', ['$scope', '$http', function ($scope, $http) {
 
 
         // console.log(unicorn);
@@ -53,6 +53,7 @@ angular.module('ChatStory', [])
                 clearInterval(this.interval);
             }
         }
+
 
         $scope.chat = []
         $scope.choose = false
