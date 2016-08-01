@@ -32,7 +32,7 @@ gulp.task('ts', function() {
 });
 
 gulp.task('default', ['connect', 'sass'], function() {
-    connect.reload();
+    gulp.src('.').pipe(connect.reload())
     gulp.watch('./scss/**/*.scss', ['sass']);
     gulp.watch('./ts/**/*.ts', ['ts']);
     gulp.watch('./*.html', ['html']);

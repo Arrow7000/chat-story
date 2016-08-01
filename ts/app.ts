@@ -1,5 +1,13 @@
 declare var angular: any;
 angular.module('ChatStory', [])
+    .directive('typingIndicator', function () {
+        return {
+            scope: {},
+            controller: ['$scope', function ($scope) {
+
+            }]
+        }
+    })
     .controller('Chat', ['$scope', '$http', function ($scope, $http) {
 
 
@@ -113,9 +121,6 @@ angular.module('ChatStory', [])
                     ]
                 }]
         }
-
-
-
 
 
 

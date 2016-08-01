@@ -1,4 +1,11 @@
 angular.module('ChatStory', [])
+    .directive('typingIndicator', function () {
+    return {
+        scope: {},
+        controller: ['$scope', function ($scope) {
+            }]
+    };
+})
     .controller('Chat', ['$scope', '$http', function ($scope, $http) {
         // console.log(unicorn);
         function Message(author, pause, message, typingSpeed) {
