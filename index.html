@@ -32,22 +32,31 @@
         </div>
         <div class="chat-window">
 
-            <div class="message__block" ng-repeat="message in chat" ng-class="{'message--me': message.author === 'me'}">
-                <div class="message__body">
-                    <p class="message__text">
-                        {{message.message}}
-                    </p>
-                </div>
+            <div class="message bubble" ng-repeat="message in chat" ng-class="{'message--me': message.author === 'me'}">
+                <p class="bubble__text">
+                    {{message.message}}
+                </p>
+                <!--<div class="bubble-hook"></div>-->
             </div>
 
-            <div class="typing" ng-show="typing.on">{{typing.dots}}</div>
+            <div class="bubble typing" ng-show="typing.on">
+                <p class="bubble__text" ng-class="{'empty': typing.dots.length < 1}">
+                    {{typing.dots}}
+                </p>
+            </div>
         </div>
+        <!--<div class="message-select__container" ng-show="choose">
+            <button class="button message-select__button" type="button" ng-repeat="c in choice" ng-click="beginThread(c)">{{c.messages[0].message}}</button>
+        </div>-->
 
         <div class="message-select__container" ng-show="choose">
-            <button class="button message-select__button" type="button" ng-repeat="c in choice" ng-click="beginThread(c)">{{c.messages[0].message}}</button>
-        </div>
+            <div class="bubble bubble--me message-select__button" ng-repeat="c in choice" ng-click="beginThread(c)">
+                <p class="bubble__text">
+                    {{c.messages[0].message}}
+                </p>
+            </div>
 
-    </div>
+        </div>
 
 </body>
 

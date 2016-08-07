@@ -4,7 +4,7 @@ const gulp = require('gulp'),
     watch = require('gulp-watch');
 
 gulp.task('connect', function() {
-    connect.server({
+    return connect.server({
         root: '.',
         livereload: true
     });
@@ -12,27 +12,29 @@ gulp.task('connect', function() {
 
 gulp.task('html', function() {
     console.log('HTML changed')
-    gulp.src('.')
+    return gulp.src('.')
         .pipe(connect.reload())
 });
 
 gulp.task('sass', function() {
-    console.log('Compiling Sass')
-    gulp.src('./scss/**/*.scss')
+    return gulp.src('./scss/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./css'))
         .pipe(connect.reload())
-    console.log('Sass done');
 });
 
 gulp.task('ts', function() {
     console.log('TS changed')
-    gulp.src('./ts/**/*.ts')
+    return gulp.src('.')
         .pipe(connect.reload())
 });
 
-gulp.task('default', ['connect', 'sass'], function() {
-    gulp.src('.').pipe(connect.reload())
+gulp.task('reload', ['connect'], function() {
+    return gulp.src('.')
+        .pipe(connect.reload())
+});
+
+gulp.task('default', ['sass', 'reload'], function() {
     gulp.watch('./scss/**/*.scss', ['sass']);
     gulp.watch('./ts/**/*.ts', ['ts']);
     gulp.watch('./*.html', ['html']);

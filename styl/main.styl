@@ -56,58 +56,84 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.message {
-    &__block {
-        display: block;
-        overflow: hidden;
-        // margin-top: 5px;
-        // margin-bottom: 5px;
-    }
-    &__body {
-        padding: 10px;
-        background-color: #77b;
-        border-radius: 10px;
-        clear: both;
-        float: left;
-        max-width: 60%;
-        // margin-top: 5px;
-        // margin-bottom: 5px; 
-    }
-    &__text {
-        margin: 0;
-        color: #fff;
-    }
-    &--me {
-        .message {
-            &__body {
-                background-color: #b77;
-                float: right;
-            }
-        }
-    }
-}
+$them = #F1F0F0;
+$us = #0084FF;
 
-.typing {
-    width: 25px;
+body {
+    margin: 0;
+    font-family: sans-serif;
 }
 
 .chat-window {
-    height: 400px;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-@media screen and (min-width: 760px) {
-    .message {
-        &__body {
-            max-width: 40%;
+.bubble {
+    background: $them;
+    margin: 5px;
+    border-radius: 22px;
+    &__text {
+        margin: 10px;
+        margin-left: 16px;
+        margin-right: 16px;
+        color: #000;
+    }
+}
+
+.message {
+    max-width: 60%;
+}
+
+.message--me {
+    align-self: flex-end;
+    background: $us;
+    .bubble {
+        &__text {
+            color: #fff;
         }
     }
+}
+
+.bubble--me {
+    align-self: flex-end;
+    background: $us;
+    &:hover {
+        background: darken($us, 20%);
+    }
+    &:active {
+        background: darken($us, 30%);
+    }
+    .bubble {
+        &__text {
+            color: #fff;
+        }
+    }
+}
+
+.message-select {
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    &__button {
+        cursor: pointer;
+    }
+}
+
+.typing .bubble__text:blank:before {
+    content: ".";
+    color: rgba(0,0,0,0.1);
+    background: #000;
 }
 
 
 /* ==========================================================================
    Media Queries
-   ========================================================================== */
+========================================================================== */
 
 @media only screen and (min-width: 35em) {}
 
